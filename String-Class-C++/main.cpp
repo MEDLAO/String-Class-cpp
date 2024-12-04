@@ -2,7 +2,7 @@
 //  main.cpp
 //  String-Class-C++
 //
-//  Created by Sofiane Medhouny Laouina on 04/12/2024.
+//  Created by MEDLAO on 04/12/2024.
 //
 
 #include <iostream>
