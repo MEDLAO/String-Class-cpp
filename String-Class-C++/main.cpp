@@ -13,6 +13,20 @@ using namespace std;
 class MyString {
     //Initialize the char array
     char* str;
+    
+public:
+    //No arguments constructor
+    MyString();
+    
+    //Constructor with one argument
+    MyString(char* val);
+    
+    //Copy constructor
+    MyString(const MyString& source);
+    
+    //Move constructor
+    MyString(MyString&& source);
+    
 };
 
 
