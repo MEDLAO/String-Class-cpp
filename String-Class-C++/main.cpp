@@ -27,6 +27,8 @@ public:
     //Move constructor
     MyString(MyString&& source);
     
+    //Destructor
+    ~MyString() {delete str;}
 };
 
 
