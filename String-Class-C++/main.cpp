@@ -31,7 +31,14 @@ public:
     ~MyString() {delete str;}
 };
 
-
+// Default constructor: Initializes the MyString object with an empty string
+MyString::MyString()
+    : str{nullptr}
+{
+    str = new char[1];
+    str[0] = '\0';
+    
+}
 
 
 int main(int argc, const char * argv[]) {
