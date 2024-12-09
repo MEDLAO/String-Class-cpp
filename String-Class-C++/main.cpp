@@ -31,13 +31,28 @@ public:
     ~MyString() {delete str;}
 };
 
-// Default constructor: Initializes the MyString object with an empty string
+//Default constructor: Initializes the MyString object with an empty string
 MyString::MyString()
     : str{nullptr}
 {
-    str = new char[1];
-    str[0] = '\0';
+    str = new char[1]; //Allocate memory for 1 character
+    str[0] = '\0'; //Set the first character to the null terminator (empty string)
     
+}
+
+//Constructor with one argument
+MyString::MyString(char* val)
+{
+    if (val == nullptr) {
+        str = new char[1];
+        str[0] = '\0';
+    }
+    
+    else {
+        str = new char[strlen(val) + 1];
+        
+    
+    }
 }
 
 
