@@ -49,7 +49,11 @@ MyString::MyString(char* val)
     }
     
     else {
+        //Dynamically allocate memory for the string, including the null terminator
         str = new char[strlen(val) + 1];
+        
+        strcpy(str, val); //Copy the string from val to str
+        //str[strlen(val)] = '\0';
         
     
     }
