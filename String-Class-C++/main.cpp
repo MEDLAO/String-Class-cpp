@@ -68,10 +68,15 @@ MyString::MyString(const MyString& source)
     //str[strlen(source.str)] = '\0';
 }
 
-
+//Implementing move constructor : transfers ownership from an rvalue object (source)
+MyString::MyString(MyString&& source)
+{
+    str = source.str; //Transfer ownership of the resource from source
+    source.str = nullptr; //Nullify source pointer to prevent double deletion
+}
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    
     return 0;
 }
