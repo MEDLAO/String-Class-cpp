@@ -40,7 +40,7 @@ MyString::MyString()
     
 }
 
-//Constructor with one argument
+//Implementing the constructor with one argument
 MyString::MyString(char* val)
 {
     if (val == nullptr) {
@@ -55,9 +55,19 @@ MyString::MyString(char* val)
         strcpy(str, val); //Copy the string from val to str
         //str[strlen(val)] = '\0';
         
+        cout << "The string passed is: " << str << endl;
     
     }
 }
+
+//Implementing the copy constructor
+MyString::MyString(const MyString& source)
+{
+    str = new char[strlen(source.str) + 1];
+    strcpy(str, source.str);
+    //str[strlen(source.str)] = '\0';
+}
+
 
 
 int main(int argc, const char * argv[]) {
