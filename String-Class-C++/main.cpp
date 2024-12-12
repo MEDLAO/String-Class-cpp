@@ -77,6 +77,11 @@ MyString::MyString(MyString&& source)
 
 int main(int argc, const char * argv[]) {
     
+    MyString a; //Create a MyString object using the default constructor
+    
+    char temp[] = "Hello"; //Create a character array initialized with the string "Hello"
+    
+    MyString b{ temp }; // // Initialize MyString object b using the constructor with a C-style string
     
     return 0;
 }
