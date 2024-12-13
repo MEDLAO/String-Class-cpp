@@ -83,5 +83,13 @@ int main(int argc, const char * argv[]) {
     
     MyString b{ temp }; // // Initialize MyString object b using the constructor with a C-style string
     
+    //Copy constructor
+    MyString c{ a };
+    
+    char temp1[] = "World";
+    
+    // Create MyString object d by moving a temporary object (calls the move constructor)
+    MyString d{ MyString( temp ) };
+    
     return 0;
 }
