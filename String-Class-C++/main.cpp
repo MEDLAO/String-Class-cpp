@@ -29,6 +29,9 @@ public:
     
     //Destructor
     ~MyString() {delete str;}
+    
+    // Stream insertion operator declaration
+    friend ostream& operator<<(ostream& os, const MyString& obj);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
