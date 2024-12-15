@@ -30,8 +30,11 @@ public:
     //Destructor
     ~MyString() {delete str;}
     
-    // Stream insertion operator declaration
+    //Stream insertion operator declaration
     friend ostream& operator<<(ostream& os, const MyString& obj);
+    
+    //Prototype for stream extraction
+    friend istream& operator>>(istream& is, MyString& obj);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
