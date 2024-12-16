@@ -35,6 +35,9 @@ public:
     
     //Prototype for stream extraction
     friend istream& operator>>(istream& is, MyString& obj);
+    
+    //Declare operator+ to concatenate MyString objects
+    friend MyString operator+(const MyString& lhs, const MyString& rhs);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
