@@ -84,6 +84,14 @@ MyString::MyString(MyString&& source)
     source.str = nullptr; //Nullify source pointer to prevent double deletion
 }
 
+//Overloading the stream insertion operator
+ostream& operator<<(ostream& os, const MyString& obj)
+{
+    os << obj.str;
+    return os;
+}
+
+
 int main(int argc, const char * argv[]) {
     
     MyString a; //Create a MyString object using the default constructor
