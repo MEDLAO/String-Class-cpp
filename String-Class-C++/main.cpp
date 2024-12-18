@@ -91,6 +91,16 @@ ostream& operator<<(ostream& os, const MyString& obj)
     return os;
 }
 
+// Overloading the stream extraction operator
+istream& operator>>(istream& is, MyString& obj)
+{
+    char* buff = new char[1000];
+    memset(&buff[0], 0, sizeof(buff));
+    is >> buff;
+    obj = MyString{ buff };
+    delete[] buff;
+    return is;
+}
 
 int main(int argc, const char * argv[]) {
     
