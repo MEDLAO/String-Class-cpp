@@ -94,7 +94,9 @@ ostream& operator<<(ostream& os, const MyString& obj)
 // Overloading the stream extraction operator
 istream& operator>>(istream& is, MyString& obj)
 {
+    // Dynamically allocate memory for a temporary buffer to store input
     char* buff = new char[1000];
+    // Initialize the buffer to zero (null characters)
     memset(&buff[0], 0, sizeof(buff));
     is >> buff;
     obj = MyString{ buff };
