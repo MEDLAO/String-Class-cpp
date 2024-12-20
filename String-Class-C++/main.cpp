@@ -96,11 +96,13 @@ istream& operator>>(istream& is, MyString& obj)
 {
     // Dynamically allocate memory for a temporary buffer to store input
     char* buff = new char[1000];
-    // Initialize the buffer to zero (null characters)
-    memset(&buff[0], 0, sizeof(buff));
-    is >> buff;
+    // Safely read input into the buffer
+    is.getline(buff, 1000);
+    // Assign the buffer content to the MyString object
     obj = MyString{ buff };
+    // Free the dynamically allocated buffer
     delete[] buff;
+    // Return the input stream for chaining
     return is;
 }
 
