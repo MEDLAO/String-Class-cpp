@@ -84,6 +84,17 @@ MyString::MyString(MyString&& source)
     source.str = nullptr; //Nullify source pointer to prevent double deletion
 }
 
+//Overloading the assignment operator
+MyString& MyString::operator=(const MyString& rhs)
+{
+    if (this == &rhs)
+        return *this;
+    delete[] str;
+    str = new char[strlen(rhs.str) + 1];
+    strcpy(str, rhs.str);
+    return *this;
+}
+
 //Overloading the stream insertion operator
 ostream& operator<<(ostream& os, const MyString& obj)
 {
