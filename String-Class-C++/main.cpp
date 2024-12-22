@@ -38,6 +38,9 @@ public:
     
     //Declare operator+ to concatenate MyString objects
     friend MyString operator+(const MyString& lhs, const MyString& rhs);
+    
+    //Declare the assignment operator
+    MyString& operator=(const MyString& rhs);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
