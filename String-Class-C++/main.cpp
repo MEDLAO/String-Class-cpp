@@ -41,6 +41,9 @@ public:
     
     //Declare the assignment operator
     MyString& operator=(const MyString& rhs);
+    
+    //pop_back() function
+    void pop_back();
 };
 
 //Default constructor: Initializes the MyString object with an empty string
@@ -65,9 +68,9 @@ MyString::MyString(char* val)
         str = new char[strlen(val) + 1];
         
         strcpy(str, val); //Copy the string from val to str
-        //str[strlen(val)] = '\0';
+        str[strlen(val)] = '\0';
         
-        cout << "The string passed is: " << str << endl;
+        //cout << "The string passed is: " << str << endl;
     
     }
 }
@@ -77,7 +80,7 @@ MyString::MyString(const MyString& source)
 {
     str = new char[strlen(source.str) + 1];
     strcpy(str, source.str);
-    //str[strlen(source.str)] = '\0';
+    str[strlen(source.str)] = '\0';
 }
 
 //Implementing move constructor : transfers ownership from an rvalue object (source)
@@ -108,16 +111,34 @@ ostream& operator<<(ostream& os, const MyString& obj)
 // Overloading the stream extraction operator
 istream& operator>>(istream& is, MyString& obj)
 {
-    // Dynamically allocate memory for a temporary buffer to store input
+    //Dynamically allocate memory for a temporary buffer to store input
     char* buff = new char[1000];
-    // Safely read input into the buffer
+    //Safely read input into the buffer
     is.getline(buff, 1000);
-    // Assign the buffer content to the MyString object
+    //Assign the buffer content to the MyString object
     obj = MyString{ buff };
-    // Free the dynamically allocated buffer
+    //Free the dynamically allocated buffer
     delete[] buff;
-    // Return the input stream for chaining
+    //Return the input stream for chaining
     return is;
+}
+
+//Implementation of pop_back()
+void MyString::pop_back()
+{
+    int length = strlen(str);
+    char* buff = new char[length];
+    
+    //Copy character from str to buff[]
+    for (int i = 0; i < length - 1; i++) {
+        buff[i] = str[i];
+        buff[length - 1] = '\0';
+    }
+    
+    //Update the current object with the new string stored in buff
+    *this = MyString{ buff };
+    
+    delete[] buff;
 }
 
 int main(int argc, const char * argv[]) {
@@ -126,15 +147,22 @@ int main(int argc, const char * argv[]) {
     
     char temp[] = "Hello"; //Create a character array initialized with the string "Hello"
     
-    MyString b{ temp }; // // Initialize MyString object b using the constructor with a C-style string
+    MyString b{ temp }; //Initialize MyString object b using the constructor with a C-style string
     
     //Copy constructor
     MyString c{ a };
     
     char temp1[] = "World";
     
-    // Create MyString object d by moving a temporary object (calls the move constructor)
+    //Create MyString object d by moving a temporary object (calls the move constructor)
     MyString d{ MyString( temp ) };
+    
+    cout << "MyString b: " << b << endl;
+    
+    //Remove last character from MyString b
+    b.pop_back();
+    
+    cout << "MyString b: " << b << endl;
     
     return 0;
 }
