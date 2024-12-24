@@ -44,6 +44,9 @@ public:
     
     //pop_back() function
     void pop_back();
+    
+    //push_back() function
+    void push_back(char a);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
@@ -141,6 +144,26 @@ void MyString::pop_back()
     delete[] buff;
 }
 
+//Implementation of push_back()
+void MyString::push_back(char a)
+{
+    int length = strlen(str);
+    
+    char* buff = new char[length + 2];
+    
+    for (int i = 0; i < length; i++) {
+        buff[i] = str[i];
+    }
+    
+    buff[length] = a;
+    buff[length + 1] = '\0';
+    
+    *this = MyString{ buff };
+    
+    delete[] buff;
+    
+}
+
 int main(int argc, const char * argv[]) {
     
     MyString a; //Create a MyString object using the default constructor
@@ -161,6 +184,11 @@ int main(int argc, const char * argv[]) {
     
     //Remove last character from MyString b
     b.pop_back();
+    
+    cout << "MyString b: " << b << endl;
+    
+    //Append last character
+    b.push_back('o');
     
     cout << "MyString b: " << b << endl;
     
