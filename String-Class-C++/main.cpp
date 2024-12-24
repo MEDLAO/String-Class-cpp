@@ -47,6 +47,9 @@ public:
     
     //push_back() function
     void push_back(char a);
+    
+    //To get the length
+    int get_length();
 };
 
 //Default constructor: Initializes the MyString object with an empty string
