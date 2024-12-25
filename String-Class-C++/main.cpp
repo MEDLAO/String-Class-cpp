@@ -167,6 +167,12 @@ void MyString::push_back(char a)
     
 }
 
+//Implementation of get_length()
+int MyString::get_length()
+{
+    return strlen(str);
+}
+
 int main(int argc, const char * argv[]) {
     
     MyString a; //Create a MyString object using the default constructor
@@ -194,6 +200,8 @@ int main(int argc, const char * argv[]) {
     b.push_back('o');
     
     cout << "MyString b: " << b << endl;
+    
+    cout << "Length of MyString b: " << b.get_length() << endl;
     
     return 0;
 }
