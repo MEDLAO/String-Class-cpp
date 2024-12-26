@@ -50,6 +50,9 @@ public:
     
     //To get the length
     int get_length();
+    
+    //Function to copy the string of length len from position pos
+    void copy(char s[], int len, int pos);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
