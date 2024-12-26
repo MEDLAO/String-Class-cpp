@@ -176,6 +176,15 @@ int MyString::get_length()
     return strlen(str);
 }
 
+//Implementation of copy()
+void MyString::copy(char s[], int len, int pos)
+{
+    for (int i = 0; i < len; i++) {
+        s[i] = str[pos + i];
+    }
+    s[len] = '\0';
+}
+
 int main(int argc, const char * argv[]) {
     
     MyString a; //Create a MyString object using the default constructor
@@ -205,6 +214,13 @@ int main(int argc, const char * argv[]) {
     cout << "MyString b: " << b << endl;
     
     cout << "Length of MyString b: " << b.get_length() << endl;
+    
+    char arr[80];
+    
+    b.copy(arr, 3, 2);
+    
+    cout << "arr is : " << arr << endl;
+    
     
     return 0;
 }
