@@ -53,6 +53,9 @@ public:
     
     //Function to copy the string of length len from position pos
     void copy(char s[], int len, int pos);
+    
+    //Function to swap strings
+    void swap(MyString& rhs);
 };
 
 //Default constructor: Initializes the MyString object with an empty string
@@ -185,6 +188,15 @@ void MyString::copy(char s[], int len, int pos)
     s[len] = '\0';
 }
 
+//Implementation of swap()
+void MyString::swap(MyString &rhs)
+{
+    MyString temp{ rhs };
+    rhs = *this;
+    *this = temp;
+}
+
+
 int main(int argc, const char * argv[]) {
     
     MyString a; //Create a MyString object using the default constructor
@@ -220,6 +232,17 @@ int main(int argc, const char * argv[]) {
     b.copy(arr, 3, 2);
     
     cout << "arr is : " << arr << endl;
+    
+    d.pop_back();
+    
+    cout << "Mystring d : " << d << endl;
+    
+    cout << "b is: " << b << " d is: " << d << endl;
+    
+    //Swap d and b
+    d.swap(b);
+    
+    cout << "Now b is: " << b << " and d is: " << d << endl;
     
     
     return 0;
