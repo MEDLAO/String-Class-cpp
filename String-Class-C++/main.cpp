@@ -115,9 +115,25 @@ MyString& MyString::operator=(const MyString& rhs)
 }
 
 //Overloading the plus operator
-MyString& MyString::operator+(const Mystring& lhs, const MyString& rhs)
+MyString operator+(const MyString& lhs, const MyString& rhs)
 {
+    //Calculate total length of the concatenated string
+    int length = strlen(lhs.str) + strlen(rhs.str);
     
+    //Dynamically allocate memory for the concatenated string (+1 for null terminator)
+    char* buff = new char[length + 1];
+    
+    //Copy the strings to buff[]
+    strcpy(buff, lhs.str);
+    strcat(buff, rhs.str);
+    buff[length] = '\0';
+    
+    //Create a temporary MyString object initialized with the concatenated string
+    MyString temp{ buff };
+    
+    delete[] buff;
+    
+    return temp;
 }
 
 //Overloading the stream insertion operator
@@ -250,6 +266,11 @@ int main(int argc, const char * argv[]) {
     d.swap(b);
     
     cout << "Now b is: " << b << " and d is: " << d << endl;
+    
+    //Concatenate b and d
+    MyString f{b + d};
+    
+    cout << "String f : " << f << endl;
     
     
     return 0;
