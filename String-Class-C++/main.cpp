@@ -42,6 +42,7 @@ public:
     //Declare the assignment operator
     MyString& operator=(const MyString& rhs);
     
+    
     //pop_back() function
     void pop_back();
     
@@ -111,6 +112,12 @@ MyString& MyString::operator=(const MyString& rhs)
     str = new char[strlen(rhs.str) + 1];
     strcpy(str, rhs.str);
     return *this;
+}
+
+//Overloading the plus operator
+MyString& MyString::operator+(const Mystring& lhs, const MyString& rhs)
+{
+    
 }
 
 //Overloading the stream insertion operator
